@@ -1,6 +1,8 @@
 import pandas as pd
 import datetime as dt
 import logging
+import matplotlib.pyplot as plt
+import numpy as np
 
 fmap = "./data/map_qid_to_future_contract.csv"
 dfm = pd.read_csv(fmap, sep = ",")
@@ -25,3 +27,23 @@ def get_active_cnt(df):
 
     return df
 
+def plot(df, x_col, y_col):
+    df.set_index(x_col).plot(y = y_col, figsize=(10,6))
+    plt.title("Cocoa Active Contract")
+    plt.xlabel("Date")
+    plt.ylabel(y_col)
+    plt.savefig(f'data/active_contract_{y_col}_timeseries.png', dpi=300, bbox_inches="tight")
+
+
+if __name__ == "__main__":
+    df = pd.read_csv("./data/continuous_price_series.csv", sep = ",")
+    df['log_returns'] = np.log(df['settlement_price']).diff(periods=1)
+    plot(df, "eod", "settlement_price")
+    plot(df, "eod", "log_returns")
+
+    trades = pd.read_csv("./data/countertrend_system_trades.csv", sep = ",")
+    trades['equity'] = trades['pnl'].cumsum()
+    trades.set_index("eod").plot(y = "equity", figsize=(10,6))
+    plt.title("Equity Curve")
+    plt.xlabel("Date")
+    plt.savefig(f'data/equity_curve.png', dpi=300, bbox_inches="tight")
