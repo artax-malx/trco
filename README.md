@@ -1,9 +1,9 @@
 TRCO
 =====
 
-Tradesystem Cocoa (TRCO), system trading active cocoa futures on ICE
+Tradesystem Cocoa (TRCO), system trading active cocoa futures on ICE.
 
-Note that all code has to be run from the root directory 
+Note that all code has to be run from the root directory.
 
 See presentation [docs/cocoa\_trading\_system.pdf](docs/cocoa_trading_system.pdf) with a description of the methodology and the results.
 
