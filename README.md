@@ -1,7 +1,7 @@
 TRCO
 =====
 
-Tradesystem Cocoa (TRCO), system trading active cocoa futures on ICE.
+Tradesystem Cocoa (TRCO), mid-frequency system trading active cocoa futures on ICE. Daily prices of the cocoa futures chain from 26 Sep 2022 can be found in [data](data).
 
 Note that all code has to be run from the root directory.
 
@@ -31,7 +31,7 @@ Note that the there is only a test template and no actual tests yet.
 ```console
 python3 make_price_series.py 
 ```
-* After generating the active future time series, backtest trade system using [trco/strategy.py](trco/strategy.py) 
+* After generating the active future time series, backtest trade system using with Walk-Forward Analysis by running [trco/strategy.py](trco/strategy.py) 
 ```console
 python3 trco/strategy.py 
 ```
